@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Signature&display=swap');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -77,13 +79,42 @@ a {
   font-size: 5rem;
   transform: translate(-50%, -50%);
   font-weight: 900;
+  font-family: "Momo Signature", cursive;
+  font-weight: 900;
 }
 
 .about {
   height: 100vh;
   width: 100vw;
   color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.title {
+  transform: translateY(-100px);
+  opacity: 0;
+  transition: transform 1.5s, opacity 1.5s;
+  font-family: "Momo Signature", cursive;
+  font-weight: 900;
+  font-size: 4rem;
+}
+
+.show-title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 
 .card {
   border: 1px solid #ccc;
@@ -91,4 +122,13 @@ a {
   margin: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  text-align: center;
+
+  display: grid;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
 }
