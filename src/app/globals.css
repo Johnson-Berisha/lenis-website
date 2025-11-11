@@ -31,7 +31,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 200vh;
 }
 
 * {
@@ -57,10 +56,13 @@ a {
 }
 
 .container {
-  height: 100%;
+  height: fit-content;
   width: 100%;
   position: relative;
   transition: background 0.3s;
+  background-image: radial-gradient(#33333356 1px, transparent 1px);
+background-size: 20px 20px;
+
 }
 
 .container.black {
@@ -118,6 +120,7 @@ a {
 
 .card {
   border: 1px solid #ccc;
+  background-color: white;
   padding: 1rem;
   margin: 1rem;
   border-radius: 8px;
@@ -131,4 +134,41 @@ a {
 
 .hidden {
   display: none;
+}
+
+/* about 2 */
+.about2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: black;
+  gap: 70px;
+  padding: 0 5%; /* safer than 100px */
+  width: 100%;
+}
+
+.left-side {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-right: 20px;
+  border-right: black 4px solid;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+/* becomes fixed dynamically */
+.fixed {
+  position: fixed;
+  top: 20px; /* distance from top of viewport */
+  left: 5%; /* matches padding of parent */
+}
+
+.right-side {
+  max-width: 500px;
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
+.right-side p {
+  margin-bottom: 3rem;
 }
