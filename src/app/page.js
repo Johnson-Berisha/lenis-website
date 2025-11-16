@@ -2,22 +2,27 @@
 import { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 import "./globals.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Page() {
   const [scale, setScale] = useState(1);
   const [bg, setBg] = useState("black");
   const [hideWelcome, setHideWelcome] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
-  const [fixed, setFixed] = useState(false);
-
-  const leftSideRef = useRef(null);
+  const verticalRef = useRef(null);
+  const horizontalRef = useRef(null);
+  const colLeftRef = useRef(null);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({ duration: 1.2, smooth: true });
 
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      ScrollTrigger.update();
+      rafIdRef.current = requestAnimationFrame(raf);
 
       const scroll = window.scrollY;
       setScale(1 + scroll / 100);
@@ -25,14 +30,44 @@ export default function Page() {
       setHideWelcome(scroll > 250);
       setShowTitle(scroll > 100);
 
-      // dynamic sticky trigger
-      if (leftSideRef.current) {
-        const top = leftSideRef.current.offsetTop;
-        setFixed(scroll >= top);
-      }
+      // vertical scroll
+
     }
 
-    requestAnimationFrame(raf);
+    rafIdRef.current = requestAnimationFrame(raf);
+
+    const section1 = verticalRef.current;
+    const colLeft = colLeftRef.current;
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(colLeft, { y: 0 }, { y: "170vh", duration: 10, ease: "none" }, 0);
+
+    const scroll_1 = ScrollTrigger.create({
+      animation: tl,
+      trigger: section1,
+      start: "top top",
+      end: "bottom center",
+      scrub: true,
+    });
+
+    return () => {
+      // kill ScrollTrigger instances and GSAP tweens
+      try {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      } catch (e) {
+        // ignore
+      }
+      try {
+        tl.kill();
+      } catch (e) {}
+      try {
+        scroll_2 && scroll_2.kill && scroll_2.kill();
+      } catch (e) {}
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      if (lenisRef.current && typeof lenisRef.current.destroy === "function") {
+        lenisRef.current.destroy();
+      }
+    };
   }, []);
 
   return (
@@ -77,33 +112,43 @@ export default function Page() {
           </div>
         </div>
       </section>
-
-      <section className="about2">
-        <div className={`left-side ${fixed ? "fixed" : ""}`} ref={leftSideRef}>
-          <h1>Who</h1>
-          <h1>Am</h1>
-          <h1>I Exactly?</h1>
-        </div>
-        <div className="right-side">
-          <p>
-            I'm Gjonson Berisha, a passionate web developer and designer
-            dedicated to crafting seamless digital experiences.
-          </p>
-          <p>
-            With a keen eye for detail and a love for clean, efficient code, I
-            specialize in creating websites that are not only visually appealing
-            but also highly functional and user-friendly.
-          </p>
-          <p>
-            My approach combines creativity with technical expertise to deliver
-            solutions that meet the unique needs of each project.
-          </p>
-          <p>
-            Whether it's building from scratch or enhancing existing platforms, I
-            strive to push the boundaries of what's possible on the web.
-          </p>
-        </div>
-      </section>
+      <section id="vertical" ref={verticalRef}>
+          <div className="container_vertical">
+            <div className="vertical__content">
+              <div className="col col_left" ref={colLeftRef}>
+                <h2 className="vertical__heading">
+                  <span>Who</span>
+                  <span>Am</span>
+                  <span>I Exactly?</span>
+                </h2>
+              </div>
+              <div className="col col_right">
+                <div className="vertical__item">
+                  
+                  <p>
+                    I'm a passionate web developer from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products—from concept to polished interface—using modern web technologies.
+                  </p>
+                </div>
+                <div className="vertical__item">
+                  
+                  <p>My strengths are front-end development, UI/UX design, and building responsive layouts with precision. I enjoy solving complex problems and turning them into simple, intuitive solutions that users love to interact with.
+                  </p>
+                </div>
+                <div className="vertical__item">
+                  
+                  <p>Outside of coding, I'm deeply interested in physics, technology, and football. I believe creativity grows when you explore different passions, and I bring that energy into every project I build.
+                  </p>
+                </div>
+                <div className="vertical__item">
+                  
+                  <p>I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and attention to detail—projects that make an impact and leave a mark online.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="fake-section"></section>
     </div>
   );
 }

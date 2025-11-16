@@ -137,38 +137,50 @@ background-size: 20px 20px;
 }
 
 /* about 2 */
-.about2 {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  color: black;
-  gap: 70px;
-  padding: 0 5%; /* safer than 100px */
-  width: 100%;
+
+.col {
+    width: 50%;
 }
 
-.left-side {
-  font-size: 2rem;
-  font-weight: bold;
-  padding-right: 20px;
-  border-right: black 4px solid;
-  transition: all 0.3s ease;
-  align-self: flex-start;
+#vertical {height: fit-content;width: 100vw;}
+
+.vertical__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: black;
+    gap: 100px;
 }
 
-/* becomes fixed dynamically */
-.fixed {
-  position: fixed;
-  top: 20px; /* distance from top of viewport */
-  left: 5%; /* matches padding of parent */
+.vertical__content .col_left {height: 100%; width: fit-content;}
+
+.vertical__content .col.col_right {
+    width: 40%;
 }
 
-.right-side {
-  max-width: 500px;
-  font-size: 2rem;
-  line-height: 1.6;
+.vertical__item {
+  max-width: 450px;
+}
+.vertical__item p {
+  font-size: 36px;
+}
+.vertical__item:not(:last-child) {
+    margin-bottom: 240px;
 }
 
-.right-side p {
-  margin-bottom: 3rem;
+.fake-section {
+  height: 100vh;
+  width: 100vw;
+}
+
+.col_left h2 {
+  font-size: 48px;
+  border-right: #0a0a0a 4px solid;
+  padding-right: 40px;
+  font-family: 'Momo Signature', cursive;
+  border-radius: 20px;
+}
+
+.col_left h2 span {
+  display: block;
 }
