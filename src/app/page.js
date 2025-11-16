@@ -40,7 +40,7 @@ export default function Page() {
     const colLeft = colLeftRef.current;
 
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo(colLeft, { y: 0 }, { y: "170vh", duration: 10, ease: "none" }, 0);
+    tl.fromTo(colLeft, { y: 0 }, { y: "220vh", duration: 1, ease: "none" }, 0);
 
     const scroll_1 = ScrollTrigger.create({
       animation: tl,
@@ -148,7 +148,7 @@ export default function Page() {
             </div>
           </div>
         </section>
-        <section className="fake-section"></section>
+        
     </div>
   );
 }
