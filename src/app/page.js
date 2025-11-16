@@ -82,7 +82,7 @@ export default function Page() {
       </div>
 
       <section className="about">
-        <h1 className={`title ${showTitle ? "show-title" : "hide-title"}`}>
+        <h1 className={`accent title ${showTitle ? "show-title" : "hide-title"}`}>
           Gjonson Berisha
         </h1>
         <div className="cards">
@@ -98,8 +98,8 @@ export default function Page() {
             <h1>Powered by Code & Curiosity</h1>
             <p>
               From physics formulas to CSS grids, I explore how things work and
-              how they can look better. Logic and beauty aren’t opposites —
-              they’re partners in creation.
+              how they can look better. Logic and beauty aren't opposites —
+              they're partners in creation.
             </p>
           </div>
           <div className="card">
@@ -126,22 +126,22 @@ export default function Page() {
                 <div className="vertical__item">
                   
                   <p>
-                    I'm a passionate web developer from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products—from concept to polished interface—using modern web technologies.
+                    I'm a passionate <span className="accent">web developer</span> from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products—from concept to polished interface—using modern web technologies.
                   </p>
                 </div>
                 <div className="vertical__item">
                   
-                  <p>My strengths are front-end development, UI/UX design, and building responsive layouts with precision. I enjoy solving complex problems and turning them into simple, intuitive solutions that users love to interact with.
+                  <p>My strengths are front-end development, <span className="accent">UI/UX</span> design, and building responsive layouts with precision. I enjoy solving complex problems and turning them into simple, intuitive solutions that users love to interact with.
                   </p>
                 </div>
                 <div className="vertical__item">
                   
-                  <p>Outside of coding, I'm deeply interested in physics, technology, and football. I believe creativity grows when you explore different passions, and I bring that energy into every project I build.
+                  <p>Outside of coding, I'm deeply interested in physics, technology, and <span className="accent">football</span>. I believe creativity grows when you explore different passions, and I bring that energy into every project I build.
                   </p>
                 </div>
                 <div className="vertical__item">
                   
-                  <p>I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and attention to detail—projects that make an impact and leave a mark online.
+                  <p>I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and <span className="accent">attention</span> to detail—projects that make an impact and leave a mark online.
                   </p>
                 </div>
               </div>

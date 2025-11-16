@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #58a6ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +45,10 @@ a {
   text-decoration: none;
 }
 
+.accent {
+  color: var(--accent);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -60,7 +65,7 @@ a {
   width: 100%;
   position: relative;
   transition: background 0.3s;
-  background-image: radial-gradient(#33333356 1px, transparent 1px);
+  background-image: radial-gradient(#58a6ff5d 1px, transparent 1px);
 background-size: 20px 20px;
 
 }
