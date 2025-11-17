@@ -17,47 +17,63 @@ export default function Page() {
   const lenisRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    lenisRef.current = new Lenis({ duration: 1.2, smooth: true });
+  lenisRef.current = new Lenis({ duration: 1.2, smooth: true });
 
-    
+  const section1 = verticalRef.current;
+  const colLeft = colLeftRef.current;
 
-    function raf(time) {
-      lenisRef.current.raf(time);
-      ScrollTrigger.update();
-      rafIdRef.current = requestAnimationFrame(raf);
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo(colLeft, { y: 0 }, { y: "300vh", duration: 1, ease: "none" }, 0);
 
+  const projectsTrigger = ScrollTrigger.create({
+    trigger: "#projects",
+    start: "top center",
+    end: "bottom center",
+    onEnter: () => setBg("black"),
+    onLeaveBack: () => setBg("white"),
+  });
 
-      setScale(1 + window.scrollY / 100);
-      setBg(window.scrollY > 200 ? "white" : "black");
-      setHideWelcome(window.scrollY > 250);
-      setShowTitle(window.scrollY > 100);
-    }
+  ScrollTrigger.create({
+    animation: tl,
+    trigger: section1,
+    start: "top top",
+    end: "bottom center",
+    scrub: true,
+  });
 
+  function raf(time) {
+    lenisRef.current.raf(time);
+    ScrollTrigger.update();
     rafIdRef.current = requestAnimationFrame(raf);
 
-    const section1 = verticalRef.current;
-    const colLeft = colLeftRef.current;
+    const scroll = window.scrollY;
 
-    const tl = gsap.timeline({ paused: true });
-    tl.fromTo(colLeft, { y: 0 }, { y: "300vh", duration: 1, ease: "none" }, 0);
+    // Use getBoundingClientRect for reliable position or ScrollTrigger metrics
+    const start = projectsTrigger.start || 0;
+    const end = projectsTrigger.end || 0;
 
-    ScrollTrigger.create({
-      animation: tl,
-      trigger: section1,
-      start: "top top",
-      end: "bottom center",
-      scrub: true,
-    });
+    // Only update background if outside the projectsTrigger range
+    if (scroll < start || scroll > end) {
+      setBg(scroll > 200 ? "white" : "black");
+    }
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      tl.kill();
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      if (lenisRef.current) lenisRef.current.destroy();
-    };
-  }, []);
+    setScale(1 + scroll / 100);
+    setHideWelcome(scroll > 250);
+    setShowTitle(scroll > 100);
+  }
+
+  rafIdRef.current = requestAnimationFrame(raf);
+
+  return () => {
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+    tl.kill();
+    if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+    if (lenisRef.current) lenisRef.current.destroy();
+  };
+}, []);
+
 
   return (
     <div className={`container ${bg}`}>
@@ -144,6 +160,12 @@ export default function Page() {
             </div>
           </div>
         </div>
+      </section>
+      <section className="projects" id="projects">
+        <span className="project">Berisha AL</span>
+        <span className="project">Old Portfolio</span>
+        <span className="project">Older Portfolio</span>
+        <p>still working on this</p>
       </section>
     </div>
   );

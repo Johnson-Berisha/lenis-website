@@ -252,3 +252,33 @@ background-size: 20px 20px;
   pointer-events: none;
   z-index: 9999;
 }
+
+/* projects */
+
+.projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  color: white;
+  font-family: "Momo Signature", cursive;
+}
+
+.projects span {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.projects span:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.projects p {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
