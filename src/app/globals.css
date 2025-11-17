@@ -55,6 +55,61 @@ a {
   }
 }
 
+.menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  height: 44px;
+  padding: 0 14px;
+  width: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  border-radius: 999px;
+  border: 1px solid #2b2d31;
+  backdrop-filter: blur(4px);
+  background: rgba(23,23,23,0.18);
+
+  overflow: hidden;
+  cursor: pointer;
+  transition: width .35s cubic-bezier(.4,0,.2,1), backdrop-filter .3s;
+}
+
+.menu:hover {
+  width: 170px;
+  backdrop-filter: blur(12px);
+}
+
+.item {
+  opacity: 0;
+  text-decoration: none;
+  color: #4a5669;
+  font-weight: 500;
+  transition: opacity .35s .05s, transform .35s;
+  transform: translateY(6px);
+}
+
+.menu:hover .item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logo {
+  /* font-weight: bold; */
+  font-size: 18px;
+  font-family: "Momo Signature", cursive;
+  color: #4a5669;
+  transition: transform .35s;
+}
+
+.menu:hover .logo {
+  transform: scale(1.05);
+}
+
+
 .welcome-screen {
   height: 100vh;
   width: 100vw;
@@ -167,7 +222,7 @@ background-size: 20px 20px;
   max-width: 450px;
 }
 .vertical__item p {
-  font-size: 36px;
+  font-size: 46px;
 }
 .vertical__item:not(:last-child) {
     margin-bottom: 240px;
@@ -188,4 +243,12 @@ background-size: 20px 20px;
 
 .col_left h2 span {
   display: block;
+}
+
+.curly-progress {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
 }
