@@ -43,6 +43,36 @@ export default function Page() {
     scrub: true,
   });
 
+  // on hover of project divs, show the demo image, and it has position:absolute so it can follow the mouse
+  
+  const projectDivs = document.querySelectorAll(".project");
+
+  const onMouseEnter = (e) => {
+    const demoImg = e.currentTarget.querySelector(".demo-img");
+    demoImg.classList.add("visible");
+  }
+
+  const onMouseMove = (e) => {
+    const demoImg = e.currentTarget.querySelector(".demo-img");
+    demoImg.style.left = e.clientX + "px";
+    demoImg.style.top = e.clientY + "px";
+  }
+
+  const onMouseLeave = (e) => {
+    const demoImg = e.currentTarget.querySelector(".demo-img");
+    demoImg.classList.remove("visible");
+  }
+
+  projectDivs.forEach((div) => {
+    div.addEventListener("mouseenter", onMouseEnter);
+    div.addEventListener("mousemove", onMouseMove);
+    div.addEventListener("mouseleave", onMouseLeave);
+  });
+
+  
+
+  lenisRef.current.on("scroll", ScrollTrigger.update);    
+
   function raf(time) {
     lenisRef.current.raf(time);
     ScrollTrigger.update();
@@ -162,10 +192,18 @@ export default function Page() {
         </div>
       </section>
       <section className="projects" id="projects">
-        <span className="project">Berisha AL</span>
-        <span className="project">Old Portfolio</span>
-        <span className="project">Older Portfolio</span>
-        <p>still working on this</p>
+        <div className="project">
+          <span>Old Portfolio</span>
+          <div className="demo-img">I'm</div>
+        </div>
+        <div className="project">
+          <span>Berisha AL</span>
+          <div className="demo-img">cool</div>
+        </div>
+        <div className="project">
+          <span>Older Portfolio</span>
+          <div className="demo-img">right?</div>
+        </div>
       </section>
     </div>
   );

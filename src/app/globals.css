@@ -262,23 +262,44 @@ background-size: 20px 20px;
   flex-direction: column;
   height: 100vh;
   color: white;
-  font-family: "Momo Signature", cursive;
 }
 
-.projects span {
+.projects .project {
   font-size: 36px;
   margin: 20px 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #2b2d31;
+  transition: color .3s;
 }
 
-.projects span:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.projects .project:hover {
+  color: white;
+}
+
+.projects .project:not(:last-child) {
+  border-bottom: 1px solid #444242;
   padding-bottom: 20px;
 }
 
-.projects p {
-  background-color: orange;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: sans-serif;
+.demo-img {
+  width: 250px;
+  height: 150px;
+  background-color: #535151;
+  border-radius: 8px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  place-items: center;
+
+  /* hover effect */
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+  transform: translate(-50%, -50%);
+}
+
+.demo-img.visible {
+  opacity: 1;
 }
