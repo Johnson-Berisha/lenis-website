@@ -272,6 +272,20 @@ background-size: 20px 20px;
   color: #2b2d31;
   transition: color .3s;
   padding: 20px 0;
+  width: 40%;
+  cursor: pointer;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project span {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 .projects .project:hover {
@@ -284,16 +298,45 @@ background-size: 20px 20px;
 }
 
 .demo-img {
+  position: fixed;
   width: 250px;
   height: 150px;
-  background-color: #535151;
-  border-radius: 8px;
-  display: none;
-  position: fixed;    /* IMPORTANT */
-  pointer-events: none;  /* So hover isn’t blocked */
-  transform: translate(-50%, -50%); /* center on cursor optional */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+}
+
+.project:nth-of-type(1) .demo-img {
+  background-image: url("/nature1.jpeg");
+}
+
+.project:nth-of-type(2) .demo-img {
+  background-image: url("/nature2.jpeg");
+}
+
+.project:nth-of-type(3) .demo-img {
+  background-image: url("/nature3.jpg");
 }
 
 .demo-img.visible {
+  opacity: 1;
+}
+
+.project .project-desc {
+  font-size: 18px;
+  font-weight: 400;
+  backdrop-filter: blur(0);
+  color: #a89e9e;
+  text-transform: lowercase;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.project:hover .project-desc {
   opacity: 1;
 }

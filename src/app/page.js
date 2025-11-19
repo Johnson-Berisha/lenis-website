@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import "./globals.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 export default function Page() {
   const [scale, setScale] = useState(1);
@@ -48,27 +49,21 @@ export default function Page() {
   // Create smooth animators once
 const projectDivs = document.querySelectorAll(".project");
 
-let xTo, yTo;
-
 const onMouseEnter = (e) => {
   const demoImg = e.currentTarget.querySelector(".demo-img");
   demoImg.classList.add("visible");
-
-  // create tween targets for THIS img only
-  xTo = gsap.quickTo(demoImg, "x", { duration: 0.3, ease: "power3" });
-  yTo = gsap.quickTo(demoImg, "y", { duration: 0.3, ease: "power3" });
 };
 
 const onMouseMove = (e) => {
-  xTo(e.clientX);
-  yTo(e.clientY);
+  const demoImg = e.currentTarget.querySelector(".demo-img");
+  demoImg.style.left = `${e.clientX}px`;
+  demoImg.style.top = `${e.clientY}px`;
 };
 
 const onMouseLeave = (e) => {
   const demoImg = e.currentTarget.querySelector(".demo-img");
   demoImg.classList.remove("visible");
 };
-
 
 projectDivs.forEach((div) => {
   div.addEventListener("mouseenter", onMouseEnter);
@@ -202,16 +197,20 @@ projectDivs.forEach((div) => {
       <section className="projects" id="projects">
         <div className="project">
           <span>Old Portfolio</span>
-          <div className="demo-img">I'm</div>
+          <div className="demo-img img-1"></div>
+          <span className="project-desc">www.website.com</span>
         </div>
         <div className="project">
           <span>Berisha AL</span>
-          <div className="demo-img">cool</div>
+          <div className="demo-img img-2"></div>
+          <span className="project-desc">www.website.com</span>
         </div>
         <div className="project">
-          <span>Older Portfolio</span>
-          <div className="demo-img">right?</div>
+          <span>MDPPlayer</span>
+          <div className="demo-img img-3"></div>
+          <span className="project-desc">www.website.com</span>
         </div>
+        
       </section>
     </div>
   );
