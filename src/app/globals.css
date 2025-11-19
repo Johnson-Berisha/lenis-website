@@ -266,11 +266,12 @@ background-size: 20px 20px;
 
 .projects .project {
   font-size: 36px;
-  margin: 20px 0;
+  margin: 10px 0;
   text-transform: uppercase;
   font-weight: 900;
   color: #2b2d31;
   transition: color .3s;
+  padding: 20px 0;
 }
 
 .projects .project:hover {
@@ -287,17 +288,10 @@ background-size: 20px 20px;
   height: 150px;
   background-color: #535151;
   border-radius: 8px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  display: grid;
-  place-items: center;
-
-  /* hover effect */
-  position: fixed;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s;
-  transform: translate(-50%, -50%);
+  display: none;
+  position: fixed;    /* IMPORTANT */
+  pointer-events: none;  /* So hover isn’t blocked */
+  transform: translate(-50%, -50%); /* center on cursor optional */
 }
 
 .demo-img.visible {

@@ -45,29 +45,37 @@ export default function Page() {
 
   // on hover of project divs, show the demo image, and it has position:absolute so it can follow the mouse
   
-  const projectDivs = document.querySelectorAll(".project");
+  // Create smooth animators once
+const projectDivs = document.querySelectorAll(".project");
 
-  const onMouseEnter = (e) => {
-    const demoImg = e.currentTarget.querySelector(".demo-img");
-    demoImg.classList.add("visible");
-  }
+let xTo, yTo;
 
-  const onMouseMove = (e) => {
-    const demoImg = e.currentTarget.querySelector(".demo-img");
-    demoImg.style.left = e.clientX + "px";
-    demoImg.style.top = e.clientY + "px";
-  }
+const onMouseEnter = (e) => {
+  const demoImg = e.currentTarget.querySelector(".demo-img");
+  demoImg.classList.add("visible");
 
-  const onMouseLeave = (e) => {
-    const demoImg = e.currentTarget.querySelector(".demo-img");
-    demoImg.classList.remove("visible");
-  }
+  // create tween targets for THIS img only
+  xTo = gsap.quickTo(demoImg, "x", { duration: 0.3, ease: "power3" });
+  yTo = gsap.quickTo(demoImg, "y", { duration: 0.3, ease: "power3" });
+};
 
-  projectDivs.forEach((div) => {
-    div.addEventListener("mouseenter", onMouseEnter);
-    div.addEventListener("mousemove", onMouseMove);
-    div.addEventListener("mouseleave", onMouseLeave);
-  });
+const onMouseMove = (e) => {
+  xTo(e.clientX);
+  yTo(e.clientY);
+};
+
+const onMouseLeave = (e) => {
+  const demoImg = e.currentTarget.querySelector(".demo-img");
+  demoImg.classList.remove("visible");
+};
+
+
+projectDivs.forEach((div) => {
+  div.addEventListener("mouseenter", onMouseEnter);
+  div.addEventListener("mousemove", onMouseMove);
+  div.addEventListener("mouseleave", onMouseLeave);
+});
+
 
   
 
