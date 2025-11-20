@@ -196,6 +196,42 @@ background-size: 20px 20px;
   display: none;
 }
 
+.living-marker {
+  
+  background-color: rgba(0, 0, 0, 0.596);
+  border: #0a0a0a 1px solid;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.living-marker .green-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #4caf50;
+  border: #7dcf7f 2px solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* about 2 */
 
 .col {
@@ -339,4 +375,51 @@ background-size: 20px 20px;
 
 .project:hover .project-desc {
   opacity: 1;
+}
+
+
+.story-wrapper {
+  width: 100%;
+}
+
+.panel {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+}
+
+.panel h1 {
+  font-size: 48px;
+}
+
+.small-text {
+  font-size: 15px;
+  color: #474545;
+}
+
+.intro { background: black; }
+.chapter { background: #111; }
+
+.text, .title-showcase {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.flex-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 24px;
+  max-width: 500px;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  font-family: "Momo Signature", cursive;
 }

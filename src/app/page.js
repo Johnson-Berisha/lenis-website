@@ -44,6 +44,19 @@ export default function Page() {
     scrub: true,
   });
 
+  gsap.utils.toArray(".text, .title-showcase").forEach((el) => {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  });
+
   // on hover of project divs, show the demo image, and it has position:absolute so it can follow the mouse
   
   // Create smooth animators once
@@ -157,6 +170,9 @@ projectDivs.forEach((div) => {
             </p>
           </div>
         </div>
+        <div className="living-marker">
+          <p className="marker-text"><span className="green-dot"></span> Alive</p>
+        </div>
       </section>
 
       <section id="vertical" ref={verticalRef}>
@@ -210,8 +226,34 @@ projectDivs.forEach((div) => {
           <div className="demo-img img-3"></div>
           <span className="project-desc">www.website.com</span>
         </div>
-        
       </section>
+
+
+      
+        <div className="story-wrapper">
+          <section className="panel chapter">
+            <p className="text">This is where everything begins...</p>
+          </section>
+
+          <section className="panel chapter">
+            <p className="text">A new chapter unfolds.</p>
+          </section>
+          <section className="panel chapter">
+            <div className="text">
+              <h1>Ok, too much cinematicty</h1>
+              <p className="small-text">Or whatever its called</p>
+              <div className="flex-content">
+                <p>Thanks for scrolling all the way down here. I hope you enjoyed the little interactions and animations sprinkled throughout the page. If you'd like to see more of my work or get in touch, feel free to reach out!</p>
+                <p className="vertical-text">Have a great day!</p>
+                <div className="links small-text">
+                  <div className="link">GitHub</div>
+                  <div className="link">IG</div>
+                  <div className="link">Codepen</div>
+                </div>
+              </div>
+            </div>
+          </section>
+      </div>
     </div>
   );
 }
