@@ -232,6 +232,26 @@ background-size: 20px 20px;
   }
 }
 
+@media (max-width: 768px) {
+  .welcome {
+    font-size: 3rem;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .welcome-screen {
+    height: 120vh;
+    padding: 100px 0;
+  }
+
+  .about {
+    padding: 30px 20px;
+  }
+
+  .about .title {
+    font-size: 3rem;
+    text-align: center;
+  }
+}
 /* about 2 */
 
 .col {
@@ -281,12 +301,48 @@ background-size: 20px 20px;
   display: block;
 }
 
-.curly-progress {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
+@media (max-width: 768px) {
+  .vertical__content {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 0 20px;
+  }
+
+  .vertical__content .col {
+    width: 100%;
+  }
+  .col_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vertical__content .col_left h2 {
+    font-size: 32px;
+    border-right: none;
+    padding-right: 0;
+    width: fit-content;
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-bottom: #0a0a0a 4px solid;
+    backdrop-filter: blur(4px);
+    
+  }
+
+  .vertical__content .col.col_right {
+    width: 100%;
+    text-align: center;
+}
+
+  .vertical__item p {
+    font-size: 28px;
+  }
+
+  .vertical__item:not(:last-child) {
+    margin-bottom: 120px;
+  }
 }
 
 /* projects */

@@ -26,7 +26,16 @@ export default function Page() {
   const colLeft = colLeftRef.current;
 
   const tl = gsap.timeline({ paused: true });
+  const mm = gsap.matchMedia();
+
+mm.add("(min-width: 769px)", () => {
   tl.fromTo(colLeft, { y: 0 }, { y: "300vh", duration: 1, ease: "none" }, 0);
+});
+
+mm.add("(max-width: 768px)", () => {
+  tl.fromTo(colLeft, { y: 0 }, { y: "130vh", duration: 1, ease: "none" }, 0);
+});
+
 
   const projectsTrigger = ScrollTrigger.create({
     trigger: "#projects",
