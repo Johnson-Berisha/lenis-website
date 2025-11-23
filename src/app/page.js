@@ -4,7 +4,6 @@ import Lenis from "lenis";
 import "./globals.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 
 export default function Page() {
   const [scale, setScale] = useState(1);
@@ -32,8 +31,9 @@ mm.add("(min-width: 769px)", () => {
   tl.fromTo(colLeft, { y: 0 }, { y: "300vh", duration: 1, ease: "none" }, 0);
 });
 
-mm.add("(max-width: 768px)", () => {
-  tl.fromTo(colLeft, { y: 0 }, { y: "130vh", duration: 1, ease: "none" }, 0);
+gsap.matchMedia().add("(max-width: 768px)", () => {
+  ScrollTrigger.getAll().forEach(st => st.kill());
+  tl.kill();
 });
 
 
@@ -53,18 +53,7 @@ mm.add("(max-width: 768px)", () => {
     scrub: true,
   });
 
-  gsap.utils.toArray(".text, .title-showcase").forEach((el) => {
-    gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      }
-    });
-  });
+  
 
   // on hover of project divs, show the demo image, and it has position:absolute so it can follow the mouse
   
@@ -147,6 +136,10 @@ projectDivs.forEach((div) => {
         >
           WELCOME
         </h1>
+        <div className="screen-warning">
+           Best experience on a larger screen.
+        </div>
+
       </div>
 
       <section className="about" id="home">
@@ -239,30 +232,25 @@ projectDivs.forEach((div) => {
 
 
       
-        <div className="story-wrapper">
-          <section className="panel chapter">
-            <p className="text">This is where everything begins...</p>
-          </section>
+        <div className="story">
+  <section className="panel dark">
+    <h1>I started experimenting with code.</h1>
+    <p>Just curiosity, nothing serious.</p>
+  </section>
 
-          <section className="panel chapter">
-            <p className="text">A new chapter unfolds.</p>
-          </section>
-          <section className="panel chapter">
-            <div className="text">
-              <h1>Ok, too much cinematicty</h1>
-              <p className="small-text">Or whatever its called</p>
-              <div className="flex-content">
-                <p>Thanks for scrolling all the way down here. I hope you enjoyed the little interactions and animations sprinkled throughout the page. If you'd like to see more of my work or get in touch, feel free to reach out!</p>
-                <p className="vertical-text">Have a great day!</p>
-                <div className="links small-text">
-                  <div className="link">GitHub</div>
-                  <div className="link">IG</div>
-                  <div className="link">Codepen</div>
-                </div>
-              </div>
-            </div>
-          </section>
-      </div>
+  <section className="panel light">
+    <h1>Then I discovered design.</h1>
+    <p>Turning ideas into visuals felt like magic.</p>
+  </section>
+
+  <section className="panel gradient">
+    <h1 style={{ maxWidth: '900px' }}>Now I build experiences no one has felt before.</h1>
+    <div className="links">
+      <a>GitHub</a><a>Instagram</a><a>Portfolio</a>
+    </div>
+  </section>
+</div>
+
     </div>
   );
 }
