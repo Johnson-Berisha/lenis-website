@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import "./globals.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 
 export default function Page() {
   const [scale, setScale] = useState(1);
@@ -110,12 +111,33 @@ projectDivs.forEach((div) => {
 
   rafIdRef.current = requestAnimationFrame(raf);
 
+  const texts = document.querySelectorAll(".storyText");
+
+  texts.forEach((el) => {
+    const split = new SplitType(el, { types: "chars" });
+
+    gsap.from(split.chars, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.03,
+      duration: 1.7,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        once: true,
+      },
+    });
+  });
+
   return () => {
     ScrollTrigger.getAll().forEach((st) => st.kill());
     tl.kill();
     if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     if (lenisRef.current) lenisRef.current.destroy();
   };
+
+  
 }, []);
 
 
@@ -131,7 +153,7 @@ projectDivs.forEach((div) => {
 
       <div className="welcome-screen">
         <h1
-          className={`welcome ${hideWelcome ? "hidden" : ""}`}
+          className={`storyText welcome ${hideWelcome ? "hidden" : ""}`}
           style={{ transform: `translate(-50%, -50%) scale(${scale})` }}
         >
           WELCOME
@@ -234,17 +256,17 @@ projectDivs.forEach((div) => {
       
         <div className="story">
   <section className="panel dark">
-    <h1>I started experimenting with code.</h1>
-    <p>Just curiosity, nothing serious.</p>
+    <h1 className="storyText">I started experimenting with code.</h1>
+    <p className="storyText">Just curiosity, nothing serious.</p>
   </section>
 
   <section className="panel light">
-    <h1>Then I discovered design.</h1>
-    <p>Turning ideas into visuals felt like magic.</p>
+    <h1 className="storyText">Then I discovered design.</h1>
+    <p className="storyText">Turning ideas into visuals felt like magic.</p>
   </section>
 
   <section className="panel gradient">
-    <h1 style={{ maxWidth: '900px' }}>Now I build experiences no one has felt before.</h1>
+    <h1 className="storyText" style={{ maxWidth: '850px' }}>Now I build experiences no one has felt before.</h1>
     <div className="links">
       <a>GitHub</a><a>Instagram</a><a>Portfolio</a>
     </div>
