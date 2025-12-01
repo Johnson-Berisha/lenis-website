@@ -55,7 +55,7 @@ a {
   }
 }
 
-.menu {
+.menu, .control-panel {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -76,6 +76,69 @@ a {
   overflow: hidden;
   cursor: pointer;
   transition: width .35s cubic-bezier(.4,0,.2,1), backdrop-filter .3s;
+}
+
+.control-panel {
+  right: 20px;
+  left: auto;
+  color: #4a5669;
+  border-radius: 10px;
+  padding: 0;
+  transition: all .5s;
+}
+.control-panel .settings-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-panel:hover .settings-icon {
+  display: none;
+}
+
+.control-panel:hover {
+  width: 400px;
+  height: 220px;
+}
+
+.control-panel .cm-options {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-left: 20px;
+}
+
+.control-panel:hover .cm-options {
+  display: grid;
+}
+
+.cm-options .cm-option,
+.cm-options .cm-option,
+.cm-options .cm-option {
+  background: rgba(40, 40, 40, 0.219);
+  padding: 10px;
+  border-radius: 8px;
+  width: fit-content;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cm-options button {
+  background: #4a566993;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  width: fit-content;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cm-options button:hover {
+  background: #6c7a8a70;
 }
 
 .menu:hover {
