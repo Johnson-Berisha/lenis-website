@@ -170,7 +170,7 @@ projectDivs.forEach((div) => {
         <div className="cm-options">
         <div className="option1 cm-option">
         <button>Option 1</button>
-        <p>Demo text 1</p>
+        <p>Thank you vercel for fixing my website</p>
         </div>
         <div className="option2 cm-option">
           <button>Option 2</button>
