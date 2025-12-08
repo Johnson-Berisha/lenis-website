@@ -176,6 +176,24 @@ a {
 .welcome-screen {
   height: 100vh;
   width: 100vw;
+  position: relative;
+}
+
+.welcome-screen .scroll-message {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  background-color: #111;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: #0a0a0a 3px solid;
+  transform: translateX(-50%);
+  color: rgb(228, 228, 228);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
 }
 
 .container {
@@ -274,7 +292,12 @@ background-size: 20px 20px;
   display: none;
 }
 
-.living-marker {
+.markers {
+  display: flex;
+  gap: 5px;
+}
+
+.living-marker, .eating-marker {
   
   background-color: rgba(0, 0, 0, 0.596);
   border: #0a0a0a 1px solid;
@@ -287,7 +310,7 @@ background-size: 20px 20px;
   gap: 8px;
 }
 
-.living-marker .green-dot {
+.living-marker .green-dot, .eating-marker .orange-dot {
   width: 10px;
   height: 10px;
   background-color: #4caf50;
@@ -296,6 +319,11 @@ background-size: 20px 20px;
   display: inline-block;
   margin-right: 5px;
   animation: pulse 1s infinite;
+}
+
+.eating-marker .orange-dot {
+  background-color: orange;
+  border: #ffc97e 2px solid;
 }
 
 @keyframes pulse {
@@ -550,3 +578,32 @@ background-size: 20px 20px;
 .links { display: flex; gap: 20px; margin-top: 20px; font-size: 18px; }
 .links a { cursor: pointer; opacity: 0.7; transition: 0.2s; }
 .links a:hover { opacity: 1; }
+
+
+.skip-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.75);
+  padding: 12px 18px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  color: white;
+  font-size: 15px;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.skip-panel.visible {
+  opacity: 1;
+}
+
+.skip-panel button {
+  background: rgb(59, 57, 57);
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}

@@ -11,6 +11,9 @@ export default function Page() {
   const [bg, setBg] = useState("black");
   const [hideWelcome, setHideWelcome] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
+  const secondParagraphRef = useRef(null);
+const [showSkipPanel, setShowSkipPanel] = useState(false);
+
 
   const verticalRef = useRef(null);
   const colLeftRef = useRef(null);
@@ -130,6 +133,13 @@ projectDivs.forEach((div) => {
     });
   });
 
+  ScrollTrigger.create({
+  trigger: secondParagraphRef.current,
+  start: "top 70%",
+  onEnter: () => setShowSkipPanel(true),
+  onLeave: () => setShowSkipPanel(false)
+});
+
   return () => {
     ScrollTrigger.getAll().forEach((st) => st.kill());
     tl.kill();
@@ -185,7 +195,11 @@ projectDivs.forEach((div) => {
         </div>
         
       </header>
-
+        {showSkipPanel && (
+          <div className={`skip-panel ${showSkipPanel ? "visible" : ""}`}>
+            Too much text? <button onClick={() => window.location.href = "#projects"}>Skip</button>
+          </div>
+        )}
       <div className="welcome-screen">
         <h1
           className={`storyText welcome ${hideWelcome ? "hidden" : ""}`}
@@ -195,6 +209,9 @@ projectDivs.forEach((div) => {
         </h1>
         <div className="screen-warning">
            Best experience on a larger screen.
+        </div>
+        <div className="scroll-message">
+          <span className="arrow">↓</span> Try scrolling :)
         </div>
 
       </div>
@@ -208,29 +225,33 @@ projectDivs.forEach((div) => {
             <h1>Crafting Digital Experiences</h1>
             <p>
               I design and build sleek, performance-driven websites that blend
-              creativity with precision. Every scroll, hover, and pixel matters
-              — because great design deserves great execution.
+              creativity with precision. Every scroll, hover, and pixel matters, because great design deserves great execution.
             </p>
           </div>
           <div className="card">
             <h1>Powered by Code & Curiosity</h1>
             <p>
               From physics formulas to CSS grids, I explore how things work and
-              how they can look better. Logic and beauty aren't opposites —
+              how they can look better. Logic and beauty aren't opposites,
               they're partners in creation.
             </p>
           </div>
           <div className="card">
             <h1>Minimal. Fast. Human.</h1>
             <p>
-              No clutter, no noise — just smooth, meaningful web experiences.
+              No clutter, no noise, just smooth, meaningful web experiences.
               My goal is to make interfaces that feel natural, responsive, and
               built for humans, not algorithms.
             </p>
           </div>
         </div>
+        <div className="markers">
         <div className="living-marker">
           <p className="marker-text"><span className="green-dot"></span> Alive</p>
+        </div>
+        <div className="eating-marker">
+          <p className="marker-text"><span className="orange-dot"></span> Prob eating</p>
+        </div>
         </div>
       </section>
 
@@ -251,7 +272,7 @@ projectDivs.forEach((div) => {
                 </p>
               </div>
               <div className="vertical__item">
-                <p>
+                <p ref={secondParagraphRef}>
                   My strengths are front-end development, <span className="accent">UI/UX</span> design, and building responsive layouts with precision. I enjoy solving complex problems and turning them into simple, intuitive solutions that users love to interact with.
                 </p>
               </div>
