@@ -12,7 +12,8 @@ export default function Page() {
   const [hideWelcome, setHideWelcome] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
   const secondParagraphRef = useRef(null);
-const [showSkipPanel, setShowSkipPanel] = useState(false);
+  const [showSkipPanel, setShowSkipPanel] = useState(false);
+  const [accent, setAccent] = useState("blue");
 
 
   const verticalRef = useRef(null);
@@ -57,6 +58,9 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
     scrub: true,
   });
 
+
+  // accent changer
+  document.documentElement.setAttribute("data-accent", accent);
   
 
   // on hover of project divs, show the demo image, and it has position:absolute so it can follow the mouse
@@ -148,7 +152,9 @@ projectDivs.forEach((div) => {
   };
 
   
-}, []);
+}, [accent]);
+
+const options = ["blue", "red", "green", "yellow", "purple", "pink"];
 
 
   return (
@@ -167,33 +173,15 @@ projectDivs.forEach((div) => {
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
         </svg>
         </div>
-        <div className="cm-options">
-        <div className="option1 cm-option">
-        <button>Option 1</button>
-        <p>Thank you vercel for fixing my website</p>
-        </div>
-        <div className="option2 cm-option">
-          <button>Option 2</button>
-          <p>Demo text 2</p>
-        </div>
-        <div className="option3 cm-option">
-          <button>Option 3</button>
-          <p>Demo text 3</p>
-        </div>
-        <div className="option4 cm-option">
-        <button>Option 1</button>
-        <p>Demo text 1</p>
-        </div>
-        <div className="option5 cm-option">
-          <button>Option 2</button>
-          <p>Demo text 2</p>
-        </div>
-        <div className="option6 cm-option">
-          <button>Option 3</button>
-          <p>Demo text 3</p>
-        </div>
-        </div>
-        
+          <div className="accent-wrapper">
+            {options.map((o) => (
+              <button
+                key={o}
+                onClick={() => setAccent(o)}
+                className={`accent-dot accent-${o}`}
+              />
+            ))}
+          </div>
       </header>
         {showSkipPanel && (
           <div className={`skip-panel ${showSkipPanel ? "visible" : ""}`}>
@@ -268,7 +256,7 @@ projectDivs.forEach((div) => {
             <div className="col col_right">
               <div className="vertical__item">
                 <p>
-                  I'm a passionate <span className="accent">web developer</span> from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products—from concept to polished interface—using modern web technologies.
+                  I'm a <span className="above-text">passionate <span>sorry Anthony*</span></span> <span className="accent">web developer</span> from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products from concept to polished interface using modern web technologies.
                 </p>
               </div>
               <div className="vertical__item">
@@ -283,7 +271,7 @@ projectDivs.forEach((div) => {
               </div>
               <div className="vertical__item">
                 <p>
-                  I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and <span className="accent">attention</span> to detail—projects that make an impact and leave a mark online.
+                  I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and <span className="accent">attention</span> to detail projects that make an impact and leave a mark online.
                 </p>
               </div>
             </div>
@@ -317,6 +305,7 @@ projectDivs.forEach((div) => {
   </section>
 
   <section className="panel light">
+    <p className="storyText small-text">Sorry for flashbang</p>
     <h1 className="storyText">Then I discovered design.</h1>
     <p className="storyText">Turning ideas into visuals felt like magic.</p>
   </section>

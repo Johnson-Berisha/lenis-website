@@ -4,7 +4,33 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent: #58a6ff;
+  transition: --accent 0.3s ease;
 }
+
+:root[data-accent="blue"] {
+  --accent: #58a6ff;
+}
+
+:root[data-accent="red"] {
+  --accent: #ef4444;
+}
+
+:root[data-accent="green"] {
+  --accent: #22c55e;
+}
+
+:root[data-accent="yellow"] {
+  --accent: #eab308;
+}
+
+:root[data-accent="purple"] {
+  --accent: #a855f7;
+}
+
+:root[data-accent="pink"] {
+  --accent: #ec4899;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -47,6 +73,12 @@ a {
 
 .accent {
   color: var(--accent);
+  transition: color 0.3s;
+}
+
+.small-text {
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,9 +114,9 @@ a {
   right: 20px;
   left: auto;
   color: #4a5669;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 0;
-  transition: all .5s;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
 }
 .control-panel .settings-icon {
   width: 24px;
@@ -98,48 +130,46 @@ a {
   display: none;
 }
 
-.control-panel:hover {
-  width: 400px;
-  height: 220px;
-}
-
-.control-panel .cm-options {
-  display: none;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-left: 20px;
-}
-
-.control-panel:hover .cm-options {
-  display: grid;
-}
-
-.cm-options .cm-option,
-.cm-options .cm-option,
-.cm-options .cm-option {
-  background: rgba(40, 40, 40, 0.219);
-  padding: 10px;
-  border-radius: 8px;
-  width: fit-content;
-  color: #fff;
+.control-panel:hover .accent-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  margin: 0 15px;
 }
 
-.cm-options button {
-  background: #4a566993;
-  border: none;
-  color: white;
-  padding: 6px 10px;
-  width: fit-content;
-  border-radius: 5px;
+.control-panel:hover {
+  width: 250px;
+  /* height: 50px; */
+}
+
+.accent-wrapper {
+  display: flex;
+  gap: 10px;
+  display: none;
+}
+
+.accent-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
   cursor: pointer;
+  transition: transform .2s;
 }
 
-.cm-options button:hover {
-  background: #6c7a8a70;
+.accent-dot:hover {
+  transform: scale(1.1);
 }
+
+.accent-dot:active {
+  transform: scale(0.95);
+}
+
+.accent-blue { background: #3b82f6; }
+.accent-red { background: #ef4444; }
+.accent-green { background: #22c55e; }
+.accent-yellow { background: #eab308; }
+.accent-purple { background: #8b5cf6; }
+.accent-pink { background: #ec4899; }
+
 
 .menu:hover {
   width: 170px;
@@ -183,12 +213,12 @@ a {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  background-color: #111;
+  background-color: #ffffffa9;
   padding: 10px 15px;
   border-radius: 5px;
-  border: #0a0a0a 3px solid;
+  border: #ffffff42 3px solid;
   transform: translateX(-50%);
-  color: rgb(228, 228, 228);
+  color: rgb(255, 255, 255);
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -262,7 +292,7 @@ background-size: 20px 20px;
 .title {
   transform: translateY(-100px);
   opacity: 0;
-  transition: transform 1.5s, opacity 1.5s;
+  transition: transform 1.5s, opacity 1.5s, color 0.3s;
   font-family: "Momo Signature", cursive;
   font-weight: 900;
   font-size: 4rem;
@@ -407,6 +437,22 @@ background-size: 20px 20px;
 
 .col_left h2 span {
   display: block;
+}
+
+.above-text {
+  position: relative;
+  display: inline;
+}
+
+.above-text span {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
