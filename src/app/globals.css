@@ -100,6 +100,8 @@ a {
   justify-content: center;
   gap: 18px;
 
+  z-index: 1000;
+
   border-radius: 999px;
   border: 1px solid #2b2d31;
   backdrop-filter: blur(4px);
