@@ -113,8 +113,7 @@ a {
 }
 
 .control-panel {
-  right: 20px;
-  left: auto;
+  top: calc(20px * 3.5);
   color: #4a5669;
   /* border-radius: 10px; */
   padding: 0;
@@ -329,7 +328,7 @@ background-size: 20px 20px;
   gap: 5px;
 }
 
-.living-marker, .eating-marker {
+.living-marker {
   
   background-color: rgba(0, 0, 0, 0.596);
   border: #0a0a0a 1px solid;
@@ -342,7 +341,7 @@ background-size: 20px 20px;
   gap: 8px;
 }
 
-.living-marker .green-dot, .eating-marker .orange-dot {
+.living-marker .green-dot{
   width: 10px;
   height: 10px;
   background-color: #4caf50;
@@ -351,11 +350,6 @@ background-size: 20px 20px;
   display: inline-block;
   margin-right: 5px;
   animation: pulse 1s infinite;
-}
-
-.eating-marker .orange-dot {
-  background-color: orange;
-  border: #ffc97e 2px solid;
 }
 
 @keyframes pulse {
@@ -415,7 +409,7 @@ background-size: 20px 20px;
 }
 
 .vertical__item {
-  max-width: 450px;
+  max-width: 550px;
 }
 .vertical__item p {
   font-size: 46px;

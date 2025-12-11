@@ -33,7 +33,7 @@ export default function Page() {
   const mm = gsap.matchMedia();
 
 mm.add("(min-width: 769px)", () => {
-  tl.fromTo(colLeft, { y: 0 }, { y: "300vh", duration: 1, ease: "none" }, 0);
+  tl.fromTo(colLeft, { y: 0 }, { y: "220vh", duration: 1, ease: "none" }, 0);
 });
 
 gsap.matchMedia().add("(max-width: 768px)", () => {
@@ -206,7 +206,7 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
 
       <section className="about" id="home">
         <h1 className={`accent title ${showTitle ? "show-title" : "hide-title"}`}>
-          Gjonson Berisha
+          ~ Gjonson Berisha ~
         </h1>
         <div className="cards">
           <div className="card">
@@ -235,10 +235,13 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
         </div>
         <div className="markers">
         <div className="living-marker">
-          <p className="marker-text"><span className="green-dot"></span> Alive</p>
+          <p className="marker-text">Web Developer</p>
         </div>
-        <div className="eating-marker">
-          <p className="marker-text"><span className="orange-dot"></span> Prob eating</p>
+        <div className="living-marker">
+          <p className="marker-text"><span className="green-dot"></span> Active</p>
+        </div>
+        <div className="living-marker">
+          <p className="marker-text">Klina, Kosovo</p>
         </div>
         </div>
       </section>
@@ -256,22 +259,22 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
             <div className="col col_right">
               <div className="vertical__item">
                 <p>
-                  I'm a <span className="above-text">passionate <span>sorry Anthony*</span></span> <span className="accent">web developer</span> from Klina, Kosovo, focused on creating clean, fast, and meaningful digital experiences. I love transforming ideas into real products from concept to polished interface using modern web technologies.
+                  I'm a <span className="accent">web developer</span> from Klina, Kosovo, focused on building clean, fast, and purposeful digital experiences. I turn ideas into polished interfaces using modern tools and a detail-driven mindset.
                 </p>
               </div>
               <div className="vertical__item">
                 <p ref={secondParagraphRef}>
-                  My strengths are front-end development, <span className="accent">UI/UX</span> design, and building responsive layouts with precision. I enjoy solving complex problems and turning them into simple, intuitive solutions that users love to interact with.
+                  My strengths are front-end development, <span className="accent">UI/UX</span> thinking, and responsive layouts crafted with precision. I love taking complex problems and shaping them into simple, intuitive interactions.
                 </p>
               </div>
               <div className="vertical__item">
                 <p>
-                  Outside of coding, I'm deeply interested in physics, technology, and <span className="accent">football</span>. I believe creativity grows when you explore different passions, and I bring that energy into every project I build.
+                 I draw inspiration from physics, technology, and football, different worlds that sharpen my creativity and the way I approach <span className="accent">design</span> and development.
                 </p>
               </div>
               <div className="vertical__item">
                 <p>
-                  I'm constantly learning, improving, and pushing myself further. My goal is to build products that stand out through quality, simplicity, and <span className="accent">attention</span> to detail projects that make an impact and leave a mark online.
+                  I'm always pushing myself forward, refining my <span className="accent">skills</span> and raising my standards. My goal is to build products that feel thoughtful, crafted, and genuinely memorable online.
                 </p>
               </div>
             </div>
@@ -295,29 +298,6 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
           <span className="project-desc">www.website.com</span>
         </div>
       </section>
-
-
-      
-        <div className="story">
-  <section className="panel dark">
-    <h1 className="storyText">I started experimenting with code.</h1>
-    <p className="storyText">Just curiosity, nothing serious.</p>
-  </section>
-
-  <section className="panel light">
-    <p className="storyText small-text">Sorry for flashbang</p>
-    <h1 className="storyText">Then I discovered design.</h1>
-    <p className="storyText">Turning ideas into visuals felt like magic.</p>
-  </section>
-
-  <section className="panel gradient">
-    <h1 className="storyText" style={{ maxWidth: '850px' }}>Now I build experiences no one has felt before.</h1>
-    <div className="links">
-      <a>GitHub</a><a>Instagram</a><a>Portfolio</a>
-    </div>
-  </section>
-</div>
-
     </div>
   );
 }
