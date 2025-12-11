@@ -257,19 +257,7 @@ background-size: 20px 20px;
   font-weight: 900;
 }
 
-.screen-warning {
-  display: none;
-  text-align: center;
-  background: #ff4455;
-  color: white;
-  padding: 6px 12px;
-  font-size: 14px;
-}
-@media (max-width: 768px) {
-  .screen-warning {
-    display: block;
-  }
-}
+
 
 
 .about {

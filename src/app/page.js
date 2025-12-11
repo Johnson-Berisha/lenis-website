@@ -195,9 +195,6 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
         >
           WELCOME
         </h1>
-        <div className="screen-warning">
-           Best experience on a larger screen.
-        </div>
         <div className="scroll-message">
           <span className="arrow">↓</span> Try scrolling :)
         </div>
