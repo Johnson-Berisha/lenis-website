@@ -17,6 +17,7 @@
     "split-type": "^0.3.4"
   },
   "devDependencies": {
+    "baseline-browser-mapping": "^2.9.7",
     "eslint": "^9",
     "eslint-config-next": "16.0.7"
   }

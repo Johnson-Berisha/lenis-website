@@ -203,7 +203,7 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
 
       <section className="about" id="home">
         <h1 className={`accent title ${showTitle ? "show-title" : "hide-title"}`}>
-          ~ Gjonson Berisha ~
+          Gjonson Berisha
         </h1>
         <div className="cards">
           <div className="card">
@@ -282,18 +282,72 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
         <div className="project">
           <span>Old Portfolio</span>
           <div className="demo-img img-1"></div>
-          <span className="project-desc">www.website.com</span>
+          <span className="project-desc">https://beta-jb.vercel.app/</span>
         </div>
         <div className="project">
           <span>Berisha AL</span>
           <div className="demo-img img-2"></div>
-          <span className="project-desc">www.website.com</span>
+          <span className="project-desc">https://berishaal.vercel.app/</span>
         </div>
-        <div className="project">
-          <span>MDPPlayer</span>
+        <div className="project" style={{ marginBottom: '200px' }}>
+          <span>MPD Player</span>
           <div className="demo-img img-3"></div>
-          <span className="project-desc">www.website.com</span>
+          <span className="project-desc">https://mpdplayer.de/</span>
         </div>
+      <section className="projects-info">
+        <div className="big-project project1">
+          <div className="project-image">
+            <img src="oldportfolio.png" alt="Old Portfolio Screenshot" />
+          </div>
+          <div className="project-text">
+            <h2>Old Portfolio</h2>
+            <p>
+              A personal portfolio website showcasing my projects and skills, built with a focus on clean design and smooth user experience.
+            </p>
+            <div className="skills">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>NextJS</span>
+              <span>Figma</span>
+              <span>LenisJS</span>
+              <span>Gsap</span>
+              <span>Vercel</span>
+            </div>
+          </div>
+        </div>
+        <div className="big-project project2"><div className="project-image">
+            <img src="berisha-al.png" alt="Old Portfolio Screenshot" />
+          </div>
+          <div className="project-text">
+            <h2>Berisha A&L</h2>
+            <p>
+              Berisha AL is a project that showcases the work of a talented construction group in Kosovo. It highlights their achievements and contributions in their field.
+            </p>
+            <div className="skills">
+              <span>HTML</span>
+              <span>Figma</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Vercel</span>
+            </div>
+          </div></div>
+        <div className="big-project project3"><div className="project-image">
+            <img src="mpdplayer.png" alt="Old Portfolio Screenshot" />
+          </div>
+          <div className="project-text">
+            <h2>MPD Player</h2>
+            <p>
+              A personal portfolio website showcasing my projects and skills, built with a focus on clean design and smooth user experience.
+            </p>
+            <div className="skills">
+              <span>CSS</span>
+              <span>Figma</span>
+              <span>HTML</span>
+              <span>Vercel</span>
+            </div>
+          </div></div>
+      </section>
       </section>
     </div>
   );
