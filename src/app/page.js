@@ -15,6 +15,8 @@ export default function Page() {
   const [showSkipPanel, setShowSkipPanel] = useState(false);
   const [accent, setAccent] = useState("blue");
 
+  const navRef = useRef(null);
+  const pillRef = useRef(null);
 
   const verticalRef = useRef(null);
   const colLeftRef = useRef(null);
@@ -57,7 +59,6 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
     end: "bottom center",
     scrub: true,
   });
-
 
   // accent changer
   document.documentElement.setAttribute("data-accent", accent);
@@ -154,6 +155,53 @@ projectDivs.forEach((div) => {
   
 }, [accent]);
 
+  // Separate effect for pill movement to ensure DOM is ready
+  useEffect(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+
+    if (!nav || !pill) return;
+
+    const links = nav.querySelectorAll("a");
+    const active = nav.querySelector(".active");
+
+    if (!active) return;
+
+    const move = (el) => {
+      const r = el.getBoundingClientRect();
+      const p = nav.getBoundingClientRect();
+      pill.style.width = `${r.width}px`;
+      pill.style.left = `${r.left - p.left}px`;
+    };
+
+    // Initial position
+    move(active);
+
+    // Add hover listeners
+    const handleMouseEnter = (link) => () => move(link);
+    const handleMouseLeave = () => move(active);
+
+    links.forEach(link => {
+      link.addEventListener("mouseenter", handleMouseEnter(link));
+      link.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    // Handle window resize to keep pill in sync
+    const handleResize = () => {
+      const activeNow = nav.querySelector(".active");
+      if (activeNow) move(activeNow);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      links.forEach(link => {
+        link.removeEventListener("mouseenter", handleMouseEnter(link));
+        link.removeEventListener("mouseleave", handleMouseLeave);
+      });
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 const options = ["blue", "red", "green", "yellow", "purple", "pink"];
 
 
@@ -161,11 +209,13 @@ const options = ["blue", "red", "green", "yellow", "purple", "pink"];
     <div className={`container ${bg}`}>
 
       {/* Header */}
-      <header className="menu">
-        <a className="item" href="#home">Home</a>
-        <span className="logo">G|</span>
-        <a className="item" href="#vertical">About</a>
-      </header>
+      <nav ref={navRef} className="nav">
+        <span ref={pillRef} className="pill" />
+        <a className="active">Home</a>
+        <a>Projects</a>
+        <a>About</a>
+        <a>Contact</a>
+      </nav>
       <header className="control-panel">
         <div className="settings-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
